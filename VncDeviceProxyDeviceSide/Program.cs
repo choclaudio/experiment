@@ -1,11 +1,5 @@
 ﻿using Rebex.Net;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
 using System.Net.Sockets;
-using System.Text;
-using System.Threading;
 
 namespace VncDeviceProxy
 {
@@ -14,13 +8,13 @@ namespace VncDeviceProxy
         static void Main(string[] args)
         {
             // vnc client
-            var vncClient = new TcpClient("localhost", 5900);
+            var vncClient = new TcpClient("10.101.100.244", 5900);
             var vncClientStream = vncClient.GetStream();
 
             // connect to cloud service 
             var webSocketTunnelClient = new WebSocketClient();
-            webSocketTunnelClient.Connect("ws://jnb:9999");
-            
+            webSocketTunnelClient.Connect("ws://10.101.100.75:5000/ws");
+
             // pipe em up 
             var p = new Pipe(vncClientStream, webSocketTunnelClient);
             p.TunnelAsync().Join();

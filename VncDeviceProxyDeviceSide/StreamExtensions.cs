@@ -1,9 +1,6 @@
 ﻿using Rebex.Net;
 using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
 using System.Threading;
 
 namespace VncDeviceProxy
@@ -60,7 +57,12 @@ namespace VncDeviceProxy
             int bytesRead;
             while ((bytesRead = source.Read(buffer, 0, buffer.Length)) != 0)
             {
-                var sendBuffer = bytesRead == bufferSize ? buffer : new ArraySegment<byte>(buffer, 0, bytesRead).Array;
+                byte[] sendBuffer = bytesRead == bufferSize ? buffer : null;
+                if (sendBuffer == null)
+                {
+                    sendBuffer = new byte[bytesRead];
+                    Array.Copy(buffer, sendBuffer, bytesRead);
+                }
                 destination.Send(sendBuffer);
             }
         }
@@ -101,7 +103,6 @@ namespace VncDeviceProxy
             int bytesRead;
             while ((bytesRead = source.Receive(buffer).Count) != 0)
             {
-                //var sendBuffer = bytesRead == bufferSize ? buffer : new ArraySegment<byte>(buffer, 0, bytesRead).Array;
                 destination.Write(buffer.Array, 0, bytesRead);
             }
         }
