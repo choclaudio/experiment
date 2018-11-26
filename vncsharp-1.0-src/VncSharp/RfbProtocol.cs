@@ -115,8 +115,15 @@ namespace VncSharp
 
         private Stream CreateNewCommunicationChannel(string vncHost, int vncPort)
         {
-            return new MirrorAndImplementVNCServer(vncHost, vncPort).GetProxyStream();
+
+            var localClient = new TcpClient();
+            localClient.NoDelay = true;
+            localClient.Connect("127.0.0.1", 666);
+            return localClient.GetStream();
+            
             /*
+            return new MirrorAndImplementVNCServer(vncHost, vncPort).GetProxyStream();
+            
             tcp = new TcpClient();
             tcp.NoDelay = true;  // turn-off Nagle's Algorithm for better interactive performance with host.
             tcp.Connect(vncHost, vncPort);
@@ -124,72 +131,7 @@ namespace VncSharp
             */
         }
 
-        public class MirrorAndImplementVNCServer 
-        {
-            public Stream GetProxyStream()
-            {
-                return m_ProxyStream;
-            }
 
-            private Stream m_ProxyStream; 
-            public MirrorAndImplementVNCServer(string vncHost, int vncPort)
-            {
-                var listener = new TcpListener(IPAddress.Parse("127.0.0.1"), 666);
-                listener.Start();
-                Task.Run(async () =>
-                {
-                    while (true)
-                    {
-                        var client = await listener.AcceptTcpClientAsync();
-                        new VncServerHandler(client.GetStream(), vncHost, vncPort);
-                    }
-                });
-                Thread.Sleep(1000);
-                
-
-                var localClient = new TcpClient();
-                localClient.NoDelay = true;
-                localClient.Connect("127.0.0.1", 666);
-                m_ProxyStream = localClient.GetStream();
-            }
-
-            class VncServerHandler
-            {
-                Stream m_ClientStream;
-                Stream m_VncServerStream;
-                
-                public VncServerHandler(Stream stream, string vncHost, int vncPort)
-                {
-                    m_ClientStream = stream;
-                    var vncClient = new TcpClient();
-                    vncClient.NoDelay = true;  // turn-off Nagle's Algorithm for better interactive performance with host.
-                    vncClient.Connect(vncHost, vncPort);
-                    m_VncServerStream = vncClient.GetStream();
-                    Start();
-                }
-
-                private void Start()
-                {
-
-                    Task.Run(async () =>
-                    {
-                        try
-                        {
-
-                            Task t1 = m_ClientStream.CopyToAsync(m_VncServerStream);
-                            Task t2 = m_VncServerStream.CopyToAsync(m_ClientStream);
-                            await Task.WhenAll(t1, t2);
-                        }
-                        catch (Exception e)
-                        {
-                            Console.WriteLine("Forwarded");
-                        }
-                    });
-                }
-            }
-
-
-        }
 
 
         /// <summary>
