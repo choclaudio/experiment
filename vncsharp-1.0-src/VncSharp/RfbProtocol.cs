@@ -170,34 +170,21 @@ namespace VncSharp
 
                 private void Start()
                 {
+
                     Task.Run(async () =>
                     {
                         try
                         {
-                            while (true)
-                            {
-                                await m_ClientStream.CopyToAsync(m_VncServerStream);
-                            }
-                        }
-                        catch (Exception e) {
-                            Console.WriteLine(e.Message);
-                        }
-                    });
 
-                    Task.Run(async () =>
-                    {
-                        try { 
-                            while (true)
-                            {
-                                await m_VncServerStream.CopyToAsync(m_ClientStream);
-                            }
+                            Task t1 = m_ClientStream.CopyToAsync(m_VncServerStream);
+                            Task t2 = m_VncServerStream.CopyToAsync(m_ClientStream);
+                            await Task.WhenAll(t1, t2);
                         }
                         catch (Exception e)
                         {
-                            Console.WriteLine(e.Message);
+                            Console.WriteLine("Forwarded");
                         }
                     });
-
                 }
             }
 
