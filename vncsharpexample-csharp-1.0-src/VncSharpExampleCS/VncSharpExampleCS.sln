@@ -9,6 +9,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VncSharp", "..\..\vncsharp-
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VncDeviceProxy", "..\..\VncDeviceProxy\VncDeviceProxy.csproj", "{DC365147-6FC3-4AB8-9BB8-E4B53624615D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VncProxyDeviceSide", "..\..\VncDeviceProxyDeviceSide\VncProxyDeviceSide.csproj", "{883F44BC-9A17-4551-9691-A82E7367FD9B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VncProxyCloudSide", "..\..\VncDeviceProxyCloudSide\VncProxyCloudSide.csproj", "{F899D6CD-71AA-480D-BB5D-03A58E6432DB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +31,14 @@ Global
 		{DC365147-6FC3-4AB8-9BB8-E4B53624615D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DC365147-6FC3-4AB8-9BB8-E4B53624615D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DC365147-6FC3-4AB8-9BB8-E4B53624615D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{883F44BC-9A17-4551-9691-A82E7367FD9B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{883F44BC-9A17-4551-9691-A82E7367FD9B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{883F44BC-9A17-4551-9691-A82E7367FD9B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{883F44BC-9A17-4551-9691-A82E7367FD9B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F899D6CD-71AA-480D-BB5D-03A58E6432DB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F899D6CD-71AA-480D-BB5D-03A58E6432DB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F899D6CD-71AA-480D-BB5D-03A58E6432DB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F899D6CD-71AA-480D-BB5D-03A58E6432DB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
