@@ -4,7 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Net.Sockets;
 using System.Text;
-using System.Threading.Tasks;
+using System.Threading;
 
 namespace VncDeviceProxy
 {
@@ -23,22 +23,17 @@ namespace VncDeviceProxy
             
         }
 
-        public void Start()
+        public Thread Start()
         {
-
-            Task.Run(async () =>
+            Thread joinThread = new Thread(() =>
             {
-                try
-                {
-                    Task t1 = m_ClientStream.CopyToAsync(m_VncServerStream);
-                    Task t2 = m_VncServerStream.CopyToAsync(m_ClientStream);
-                    await Task.WhenAll(t1, t2);
-                }
-                catch (Exception e)
-                {
-                    Console.WriteLine("Forwarded");
-                }
+                Thread t1 = m_ClientStream.CopyToAsync(m_VncServerStream);
+                Thread t2 = m_VncServerStream.CopyToAsync(m_ClientStream);
+                t1.Join();
+                t2.Join();
             });
+            joinThread.Start();
+            return joinThread;
         }
     }
 

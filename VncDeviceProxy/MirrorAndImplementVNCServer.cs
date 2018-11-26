@@ -6,7 +6,6 @@ using System.Net;
 using System.Net.Sockets;
 using System.Text;
 using System.Threading;
-using System.Threading.Tasks;
 
 namespace VncDeviceProxy
 {
@@ -22,17 +21,20 @@ namespace VncDeviceProxy
         {
             var listener = new TcpListener(IPAddress.Parse("127.0.0.1"), 666);
             listener.Start();
-            Task.Run(async () =>
+
+            var threadsToJoin = new List<Thread>();
+
+            Thread t = new Thread(() =>
             {
                 while (true)
                 {
-                    var client = await listener.AcceptTcpClientAsync();
-                    new VncServerHandler(client.GetStream(), vncHost, vncPort).Start();
+                    TcpClient client = listener.AcceptTcpClient();
+                    Thread joinThread = new VncServerHandler(client.GetStream(), vncHost, vncPort).Start();
+                    threadsToJoin.Add(joinThread); // we never joing them but..
                 }
             });
+            t.Start();
+            t.Join();
         }
-
-
-
     }
 }
