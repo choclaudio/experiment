@@ -1,17 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
+﻿using System.IO;
 using System.Net;
 using System.Net.Sockets;
 using System.Net.WebSockets;
-using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using VncDeviceProxy;
@@ -49,12 +43,8 @@ namespace VncDeviceProxyCloudSide
             else
             {
                 app.UseExceptionHandler("/Home/Error");
-                app.UseHsts();
+         
             }
-
-            app.UseHttpsRedirection();
-            app.UseStaticFiles();
-            app.UseCookiePolicy();
             app.UseWebSockets();
 
             app.Use(async (context, next) =>
@@ -75,9 +65,12 @@ namespace VncDeviceProxyCloudSide
             socketServer.Start();
             Task.Run(async () =>
             {
-                TcpClient vncClient = await socketServer.AcceptTcpClientAsync();
-                Stream vncClientStream = vncClient.GetStream();
-                m_VncClientStream.SetResult(vncClientStream);
+                while (true)
+                {
+                    TcpClient vncClient = await socketServer.AcceptTcpClientAsync();
+                    Stream vncClientStream = vncClient.GetStream();
+                    m_VncClientStream.SetResult(vncClientStream);
+                }
             });
         }
 
@@ -86,6 +79,7 @@ namespace VncDeviceProxyCloudSide
         private async Task CreateTunnel(HttpContext context, WebSocket webSocket)
         {
             var vncClientStream = await m_VncClientStream.Task;
+            m_VncClientStream = new TaskCompletionSource<Stream>(); // reset for next connection attempt
             // now we got the sockets/streams, lets pipe all data!
             Pipe p = new Pipe(webSocket, vncClientStream);
             await p.TunnelAsync();
