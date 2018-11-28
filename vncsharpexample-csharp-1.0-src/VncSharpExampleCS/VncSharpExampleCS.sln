@@ -7,11 +7,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VncSharpExampleCS", "VncSha
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VncSharp", "..\..\vncsharp-1.0-src\VncSharp\VncSharp.csproj", "{E0695F0F-0FAF-44BC-AE55-A1FCBFE70271}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VncDeviceProxy", "..\..\VncDeviceProxy\VncDeviceProxy.csproj", "{DC365147-6FC3-4AB8-9BB8-E4B53624615D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClientClientProxy", "..\..\ClientClientProxy\ClientClientProxy.csproj", "{DC365147-6FC3-4AB8-9BB8-E4B53624615D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VncProxyDeviceSide", "..\..\VncDeviceProxyDeviceSide\VncProxyDeviceSide.csproj", "{883F44BC-9A17-4551-9691-A82E7367FD9B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OriginalProxy", "..\..\OriginalProxy\OriginalProxy.csproj", "{883F44BC-9A17-4551-9691-A82E7367FD9B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VncProxyCloudSide", "..\..\VncDeviceProxyCloudSide\VncProxyCloudSide.csproj", "{F899D6CD-71AA-480D-BB5D-03A58E6432DB}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServerServerProxy", "..\..\ServerServerProxy\ServerServerProxy.csproj", "{F899D6CD-71AA-480D-BB5D-03A58E6432DB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
