@@ -2,8 +2,8 @@ FROM microsoft/dotnet:2.1-sdk
 WORKDIR /src
 EXPOSE 5000
 COPY ServerServerProxy/ServerServerProxy.csproj .
-RUN dotnet restore "/ServerServerProxy.csproj"
+RUN dotnet restore ServerServerProxy.csproj
 COPY ./ServerServerProxy .
-RUN dotnet publish "ServerServerProxy.csproj" -c Release -o /app
+RUN dotnet publish ServerServerProxy.csproj -c Release -o /app
 WORKDIR /app
 ENTRYPOINT ["dotnet", "ServerServerProxy.dll"]
