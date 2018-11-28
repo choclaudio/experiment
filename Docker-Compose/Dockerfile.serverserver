@@ -1,6 +1,6 @@
 FROM microsoft/dotnet:2.1-sdk
 WORKDIR /src
-EXPOSE 5000
+EXPOSE 80
 COPY ServerServerProxy/ServerServerProxy.csproj .
 RUN dotnet restore ServerServerProxy.csproj
 COPY ./ServerServerProxy .
