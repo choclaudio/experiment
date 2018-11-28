@@ -3,10 +3,12 @@
   <PropertyGroup>
     <TargetFramework>netcoreapp2.1</TargetFramework>
     <UserSecretsId>885d5bfb-63a6-499c-b805-813783a84c24</UserSecretsId>
+    <DockerTargetOS>Linux</DockerTargetOS>
   </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.App" />
+    <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.0.1916590" />
   </ItemGroup>
 
 </Project>

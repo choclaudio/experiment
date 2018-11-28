@@ -1,0 +1,21 @@
+version: "2.4"
+
+services:
+  serverserver-proxy:
+    image: serverserver:latest
+    ports:
+      - "5000:5000"
+    scale: 1
+    restart: always
+  nginx-proxy:
+    image: nginx-vnc-cloud:latest
+    scale: 1
+    ports:
+      - "8080:8080"
+    restart: always
+  novnc:
+    image: novnc:latest
+    ports:
+      - "6080:6080"
+    scale: 1
+    restart: always
