@@ -1,13 +1,9 @@
 version: "2"
 networks:
   frontend:
-    name: custom_frontend
     driver: custom-driver-1
   backend:
-    name: custom_backend
     driver: custom-driver-2
-    
-
 services:
   nginx-proxy:
     image: nginx-vnc-cloud:latest
