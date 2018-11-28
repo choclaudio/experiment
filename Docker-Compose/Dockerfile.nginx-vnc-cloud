@@ -1,4 +1,5 @@
-FROM nginx
+FROM debian
+RUN apt-get update && apt-get -y install nginx
 COPY default.nginx /etc/nginx/sites-enabled/default
 #COPY default.nginx /etc/nginx/nginx.conf
-ENTRYPOINT ["nginx-debug" ,"-g", "daemon off;"]
+ENTRYPOINT ["nginx" ,"-g", "daemon off;"]
