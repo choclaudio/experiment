@@ -1,3 +1,3 @@
-docker build -f Dockerfile.serverserver -t serverserver:latest
-docker build -f Dockerfile.nginx-vnc-cloud -t nginx-vnc-cloud:latest
-docker build -f Dockerfile.novnc -t novnc:latest
+docker build -t serverserver:latest Dockerfile.serverserver 
+docker build -t nginx-vnc-cloud:latest Dockerfile.nginx-vnc-cloud
+docker build -t novnc:latest Dockerfile.novnc
