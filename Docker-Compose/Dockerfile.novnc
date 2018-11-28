@@ -2,4 +2,4 @@ FROM datagovsg/python-node
 WORKDIR /app
 RUN git clone https://github.com/novnc/noVNC.git
 RUN chmod +x /app/noVNC/utils/launch.sh
-ENTRYPOINT ["/app/noVNC/utils/launch.sh", "--vnc", "serverserverproxy:80"]
+ENTRYPOINT ["/app/noVNC/utils/launch.sh", "--vnc", "serverserverproxy:5000"]
