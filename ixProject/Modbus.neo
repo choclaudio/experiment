@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?neo version='2.41.177.0'?>
+<NeoItem d1p1:Serializer="Neo.ApplicationFramework.Common.Serialization.ObjectSerializer" xmlns:d1p1="urn:Neo.ApplicationFramework.Serializer">
+  <Object d1p1:type="Neo.ApplicationFramework.Tools.OpcClient.DataSourceContainer, ToolsCF, Version=2.41.177.0, Culture=neutral, PublicKeyToken=null" Name="Modbus" Driver="Modicon_Modbus_RTU_ASCII_Pre2.Modicon_Modbus_RTU_ASCII_Pre2.1" Servername="Beijer.InprocessNeo.1" Node="" Url="" TargetInfoString="iXDeveloper;WinCe8;Beijer;Exter iX;X2 pro 10;en;" d1p1:Site.Name="Modbus" ProjectGuid="fbea1ea8-5bad-45e7-b08f-9183182f1ee1">
+    <OpcUaNamespaceInfos>
+      <Object d1p1:type="Neo.ApplicationFramework.Tools.OpcUaClient.OpcUaNamespaceInfos, ToolsCF, Version=2.41.177.0, Culture=neutral, PublicKeyToken=null" />
+    </OpcUaNamespaceInfos>
+    <DataItems>
+      <Object d1p1:type="Neo.ApplicationFramework.Tools.OpcClient.DataItem, ToolsCF, Version=2.41.177.0, Culture=neutral, PublicKeyToken=null" ItemID="40001" DataType="DT_INTEGER2" d1p1:Site.Name="DataItem1" ProjectGuid="fbea1ea8-5bad-45e7-b08f-9183182f1ee1" />
+      <Object d1p1:type="Neo.ApplicationFramework.Tools.OpcClient.DataItem, ToolsCF, Version=2.41.177.0, Culture=neutral, PublicKeyToken=null" ItemID="40003" DataType="DT_INTEGER2" d1p1:Site.Name="DataItem2" ProjectGuid="fbea1ea8-5bad-45e7-b08f-9183182f1ee1" />
+      <Object d1p1:type="Neo.ApplicationFramework.Tools.OpcClient.DataItem, ToolsCF, Version=2.41.177.0, Culture=neutral, PublicKeyToken=null" ItemID="40005" DataType="DT_INTEGER2" d1p1:Site.Name="DataItem3" ProjectGuid="fbea1ea8-5bad-45e7-b08f-9183182f1ee1" />
+    </DataItems>
+  </Object>
+</NeoItem>
