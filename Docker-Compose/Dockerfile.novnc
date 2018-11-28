@@ -1,6 +1,7 @@
 FROM datagovsg/python-node
+WORKDIR /app
 ARG DNS=linux-dev
 ARG PORT=5900
-#RUN apt-get update && apt-get -y install git python
 RUN git clone https://github.com/novnc/noVNC.git
-ENTRYPOINT [./noVNC/utils/launch.sh,--vnc, $DNS:$PORT]
+RUN chmod +x /app/noVNC/utils/launch.sh
+ENTRYPOINT [/app/noVNC/utils/launch.sh,--vnc, $DNS:$PORT]
