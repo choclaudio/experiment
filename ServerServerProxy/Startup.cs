@@ -9,15 +9,18 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.HttpOverrides;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
 using VncDeviceProxy;
 
 namespace VncDeviceProxyCloudSide
 {
     public class Startup
     {
-        public Startup(IConfiguration configuration)
+        private readonly ILogger m_Logger;
+        public Startup(IConfiguration configuration, ILogger<Startup> logger)
         {
             Configuration = configuration;
+            m_Logger = logger;
         }
 
         public IConfiguration Configuration { get; }
@@ -31,20 +34,27 @@ namespace VncDeviceProxyCloudSide
                 options.CheckConsentNeeded = context => true;
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
-
+            m_Logger.LogInformation("Adding proxy nginxproxy");
             services.Configure<ForwardedHeadersOptions>(options =>
             {
+                m_Logger.LogInformation($"Requesting DNS");
                 IPAddress[] addresses = Dns.GetHostAddresses("nginxproxy");
+                m_Logger.LogInformation($"Got {addresses.Length} addresses");
                 for (int i = 0; i < addresses.Length; i++)
+                {
+                    m_Logger.LogInformation($"Adding {addresses[i].ToString()} ");
                     options.KnownProxies.Add(addresses[i]);
+                }
             });
+            m_Logger.LogInformation($"Configure done");
 
             //services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
         {
+            loggerFactory.AddConsole();
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
@@ -65,9 +75,10 @@ namespace VncDeviceProxyCloudSide
 
             app.Use(async (context, next) =>
             {
-                
+       
                 if (context.WebSockets.IsWebSocketRequest)
                 {
+                    m_Logger.LogInformation("Accepting websocket");
                     WebSocket webSocket = await context.WebSockets.AcceptWebSocketAsync();
                     await CreateTunnel(context, webSocket);
                 }
