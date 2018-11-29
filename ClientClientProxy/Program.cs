@@ -7,13 +7,15 @@ namespace VncDeviceProxy
     {
         static void Main(string[] args)
         {
+            // connect to cloud service 
+            var webSocketTunnelClient = new WebSocketClient();
+            webSocketTunnelClient.Connect("ws://40.127.108.43/ws");
+
             // vnc client
             var vncClient = new TcpClient("10.101.100.244", 5900);
             var vncClientStream = vncClient.GetStream();
 
-            // connect to cloud service 
-            var webSocketTunnelClient = new WebSocketClient();
-            webSocketTunnelClient.Connect("ws://40.127.108.43/ws");
+         
 
             // pipe em up 
             var p = new Pipe(vncClientStream, webSocketTunnelClient);

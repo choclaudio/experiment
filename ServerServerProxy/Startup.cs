@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.HttpOverrides;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using VncDeviceProxy;
@@ -30,6 +31,14 @@ namespace VncDeviceProxyCloudSide
                 options.CheckConsentNeeded = context => true;
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
+
+            services.Configure<ForwardedHeadersOptions>(options =>
+            {
+                IPAddress[] addresses = Dns.GetHostAddresses("nginxproxy");
+                for (int i = 0; i < addresses.Length; i++)
+                    options.KnownProxies.Add(addresses[i]);
+            });
+
             //services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }
 
@@ -45,10 +54,18 @@ namespace VncDeviceProxyCloudSide
                 app.UseExceptionHandler("/Home/Error");
          
             }
+            app.UseForwardedHeaders(new ForwardedHeadersOptions
+            {
+                ForwardedHeaders = ForwardedHeaders.XForwardedFor | ForwardedHeaders.XForwardedProto
+            });
+
+    
+
             app.UseWebSockets();
 
             app.Use(async (context, next) =>
             {
+                
                 if (context.WebSockets.IsWebSocketRequest)
                 {
                     WebSocket webSocket = await context.WebSockets.AcceptWebSocketAsync();
