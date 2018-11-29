@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<?neo version='2.41.177.0'?>
+<nacs:ScreenWindow Topmost="False" Title="Screen2" SizeToContent="WidthAndHeight" WindowStartupLocation="CenterScreen" WindowState="Normal" BorderStyle="ThreeDBorder" ScreenSize="1024, 600" StyleName="Default" IsCacheable="True" Width="1024" Height="600" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:nacs="clr-namespace:Neo.ApplicationFramework.Controls.Screen;assembly=Controls" xmlns:nai="clr-namespace:Neo.ApplicationFramework.Interfaces;assembly=Interfaces" xmlns:nacqq="clr-namespace:Neo.ApplicationFramework.CustomerExtensions.QRCodeGen.QRCodeControl;assembly=QRCodeControl" xmlns:nacs1="clr-namespace:Neo.ApplicationFramework.Controls.Symbol;assembly=Controls" xmlns:nacxs="clr-namespace:Neo.ApplicationFramework.Common.Xaml.Serializer;assembly=Common" x:Class="Neo.ApplicationFramework.Generated.Screen2">
+  <nacs:ScreenWindow.Background>
+    <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
+      <LinearGradientBrush.GradientStops>
+        <GradientStopCollection>
+          <GradientStop Color="#FFFFFFFF" Offset="0" />
+          <GradientStop Color="#FFD8D8D8" Offset="1" />
+        </GradientStopCollection>
+      </LinearGradientBrush.GradientStops>
+    </LinearGradientBrush>
+  </nacs:ScreenWindow.Background>
+  <nai:ActionProperties.Actions>
+    <nai:ActionList />
+  </nai:ActionProperties.Actions>
+  <nacs:ElementCanvas Name="m_EditorCanvas" Width="1024" Height="600" FocusVisualStyle="{x:Null}" AllowDrop="True" ClipToBounds="True" Focusable="True" TextOptions.TextFormattingMode="Display" TextOptions.TextRenderingMode="ClearType" Panel.ZIndex="104">
+    <nacqq:QRCodeControl QRCodeContent="http://40.127.108.43/novnc/vnc.html?host=40.127.108.43&amp;port=80" FontSize="19" Name="m_QRCode" Width="499" Height="511" RenderTransformOrigin="0.5,0.5" Visibility="Visible" Panel.ZIndex="1" Canvas.Left="44" Canvas.Top="44" />
+    <nacs1:Picture SymbolName="vnc-2-01" Stretch="True" FontSize="19" Name="m_Picture" Width="381" Height="375" RenderTransformOrigin="0.5,0.5" Visibility="Visible" Panel.ZIndex="2" Canvas.Left="599" Canvas.Top="112">
+      <nai:ScriptProperties.ScriptEvents>
+        <nai:ScriptEventList>
+          <nacxs:EventHandlerInfo EventName="MouseUp" MethodName="Picture_MouseUp" />
+        </nai:ScriptEventList>
+      </nai:ScriptProperties.ScriptEvents>
+    </nacs1:Picture>
+  </nacs:ElementCanvas>
+</nacs:ScreenWindow>

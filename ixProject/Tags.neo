@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?neo version='2.41.177.0'?>
+<NeoItem d1p1:Serializer="Neo.ApplicationFramework.Common.Serialization.ObjectSerializer" xmlns:d1p1="urn:Neo.ApplicationFramework.Serializer">
+  <Object d1p1:type="Neo.ApplicationFramework.Tools.OpcClient.GlobalController, ToolsCF, Version=2.41.177.0, Culture=neutral, PublicKeyToken=null" d1p1:Site.Name="Tags" ProjectGuid="fbea1ea8-5bad-45e7-b08f-9183182f1ee1">
+    <GlobalDataItems>
+      <Object d1p1:type="Neo.ApplicationFramework.Tools.OpcClient.GlobalDataItem, ToolsCF, Version=2.41.177.0, Culture=neutral, PublicKeyToken=null" DataType="DT_INTEGER2" d1p1:Site.Name="Tag1" ProjectGuid="fbea1ea8-5bad-45e7-b08f-9183182f1ee1" IsExposed="False">
+        <GlobalDataSubItems>
+          <Object d1p1:type="Neo.ApplicationFramework.Tools.OpcClient.GlobalDataSubItem, ToolsCF, Version=2.41.177.0, Culture=neutral, PublicKeyToken=null">
+            <DataItemNames>
+              <KeyValuePair>
+                <Key>
+                  <Object d1p1:type="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" primitive.value="Modbus" />
+                </Key>
+                <Value>
+                  <Object d1p1:type="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" primitive.value="DataItem1" />
+                </Value>
+              </KeyValuePair>
+            </DataItemNames>
+          </Object>
+        </GlobalDataSubItems>
+      </Object>
+      <Object d1p1:type="Neo.ApplicationFramework.Tools.OpcClient.GlobalDataItem, ToolsCF, Version=2.41.177.0, Culture=neutral, PublicKeyToken=null" DataType="DT_INTEGER2" d1p1:Site.Name="Tag2" ProjectGuid="fbea1ea8-5bad-45e7-b08f-9183182f1ee1" IsExposed="False">
+        <GlobalDataSubItems>
+          <Object d1p1:type="Neo.ApplicationFramework.Tools.OpcClient.GlobalDataSubItem, ToolsCF, Version=2.41.177.0, Culture=neutral, PublicKeyToken=null">
+            <DataItemNames>
+              <KeyValuePair>
+                <Key>
+                  <Object d1p1:type="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" primitive.value="Modbus" />
+                </Key>
+                <Value>
+                  <Object d1p1:type="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" primitive.value="DataItem2" />
+                </Value>
+              </KeyValuePair>
+            </DataItemNames>
+          </Object>
+        </GlobalDataSubItems>
+      </Object>
+      <Object d1p1:type="Neo.ApplicationFramework.Tools.OpcClient.GlobalDataItem, ToolsCF, Version=2.41.177.0, Culture=neutral, PublicKeyToken=null" DataType="DT_INTEGER2" d1p1:Site.Name="Tag3" ProjectGuid="fbea1ea8-5bad-45e7-b08f-9183182f1ee1" IsExposed="False">
+        <GlobalDataSubItems>
+          <Object d1p1:type="Neo.ApplicationFramework.Tools.OpcClient.GlobalDataSubItem, ToolsCF, Version=2.41.177.0, Culture=neutral, PublicKeyToken=null">
+            <DataItemNames>
+              <KeyValuePair>
+                <Key>
+                  <Object d1p1:type="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" primitive.value="Modbus" />
+                </Key>
+                <Value>
+                  <Object d1p1:type="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" primitive.value="DataItem3" />
+                </Value>
+              </KeyValuePair>
+            </DataItemNames>
+          </Object>
+        </GlobalDataSubItems>
+      </Object>
+    </GlobalDataItems>
+    <PollGroups>
+      <Object d1p1:type="Neo.ApplicationFramework.Tools.OpcClient.PollGroup, ToolsCF, Version=2.41.177.0, Culture=neutral, PublicKeyToken=null" Name="PollGroup1" Interval="500" d1p1:Site.Name="PollGroup1" ProjectGuid="fbea1ea8-5bad-45e7-b08f-9183182f1ee1" />
+      <Object d1p1:type="Neo.ApplicationFramework.Tools.OpcClient.PollGroup, ToolsCF, Version=2.41.177.0, Culture=neutral, PublicKeyToken=null" Name="PollGroup2" Interval="500" d1p1:Site.Name="PollGroup2" ProjectGuid="fbea1ea8-5bad-45e7-b08f-9183182f1ee1" />
+      <Object d1p1:type="Neo.ApplicationFramework.Tools.OpcClient.PollGroup, ToolsCF, Version=2.41.177.0, Culture=neutral, PublicKeyToken=null" Name="PollGroup3" Interval="500" d1p1:Site.Name="PollGroup3" ProjectGuid="fbea1ea8-5bad-45e7-b08f-9183182f1ee1" />
+      <Object d1p1:type="Neo.ApplicationFramework.Tools.OpcClient.PollGroup, ToolsCF, Version=2.41.177.0, Culture=neutral, PublicKeyToken=null" Name="PollGroup4" Interval="500" d1p1:Site.Name="PollGroup4" ProjectGuid="fbea1ea8-5bad-45e7-b08f-9183182f1ee1" />
+      <Object d1p1:type="Neo.ApplicationFramework.Tools.OpcClient.PollGroup, ToolsCF, Version=2.41.177.0, Culture=neutral, PublicKeyToken=null" Name="PollGroup5" Interval="500" d1p1:Site.Name="PollGroup5" ProjectGuid="fbea1ea8-5bad-45e7-b08f-9183182f1ee1" />
+    </PollGroups>
+  </Object>
+</NeoItem>
